@@ -1,5 +1,5 @@
-[![Build Status](https://travis-ci.org/GolarsStudy/codewars-java.svg?branch=master)](https://travis-ci.org/GolarsStudy/codewars-java)
-[![codebeat badge](https://codebeat.co/badges/38aab26c-4dae-490a-b4f6-b8db8fcd28f1)](https://codebeat.co/projects/github-com-golarsstudy-codewars-java-master)
+[![Build Status](https://travis-ci.org/Golars/facebook-java.svg?branch=master)](https://travis-ci.org/Golars/facebook-java)
+[![codebeat badge](https://codebeat.co/badges/393e00a7-f043-4b6a-bd5d-f34cda629155)](https://codebeat.co/projects/github-com-golars-facebook-java-master)
 
 ## License
 
