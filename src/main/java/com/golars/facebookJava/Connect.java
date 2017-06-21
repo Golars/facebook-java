@@ -14,4 +14,10 @@ public class Connect {
         AsyncHttpClient asyncHttpClient = new DefaultAsyncHttpClient();
         asyncHttpClient.prepareGet(this.config.getPrepareUrl(path, fields)).execute(response);
     }
+
+
+    public void getFbDataByToken(AsyncCompletionHandler<Response> response, String path, String fields, Token token) {
+        AsyncHttpClient asyncHttpClient = new DefaultAsyncHttpClient();
+        asyncHttpClient.prepareGet(this.config.getPrepareUrl(path, fields, token)).execute(response);
+    }
 }

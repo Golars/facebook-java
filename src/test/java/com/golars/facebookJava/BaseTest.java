@@ -10,9 +10,9 @@ public class BaseTest extends TestCase {
         this.config = new Config("resources/config_test.properties");
         super.setUp();
     }
-    
+
     public void testingConfig() {
-        this.config.setTokenFb("token");
-        assertEquals("token", this.config.getTokenFb().getToken());
+        this.config.setFbToken("token");
+        assertEquals("token", this.config.getFbToken().getToken());
     }
 }

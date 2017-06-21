@@ -9,7 +9,7 @@ public class Config {
 
     private String url;
 
-    private Token tokenFb;
+    private Token fbToken;
 
     public Config(String configFilePath) {
 
@@ -19,7 +19,7 @@ public class Config {
         try {
             input = new FileInputStream(configFilePath);
             config.load(input);
-            this.tokenFb = new Token(config.getProperty("token"));
+            this.fbToken = new Token(config.getProperty("token"));
             this.url = config.getProperty("baseUrl") + config.getProperty("version") + '/';
         } catch (IOException io) {
             io.printStackTrace();
@@ -34,15 +34,19 @@ public class Config {
         }
     }
 
-    public Token getTokenFb() {
-        return tokenFb;
+    public Token getFbToken() {
+        return fbToken;
     }
 
-    public void setTokenFb(String tokenFb) {
-        this.tokenFb = new Token(tokenFb);
+    public void setFbToken(String fbToken) {
+        this.fbToken = new Token(fbToken);
     }
 
     public String getPrepareUrl(String path, String fields) {
-        return this.url + path + "?access_token=" + this.tokenFb.getToken() + "&fields=" + fields;
+        return this.getPrepareUrl(path, fields, this.getFbToken());
+    }
+
+    public String getPrepareUrl(String path, String fields, Token token) {
+        return this.url + path + "?access_token=" + token.getToken() + "&fields=" + fields;
     }
 }
