@@ -24,7 +24,7 @@ public class ConnectTest extends BaseTest {
 
     public void testGetFbDataByToken() throws Exception {
         Connect connect = new Connect(this.config);
-        
+
         String token = "token";
         this.config.setFbToken("token");
         assertEquals(token, this.config.getFbToken().getToken());

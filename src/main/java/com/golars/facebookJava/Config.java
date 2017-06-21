@@ -19,7 +19,7 @@ public class Config {
         try {
             input = new FileInputStream(configFilePath);
             config.load(input);
-            this.fbToken = new Token(config.getProperty("token"));
+            this.fbToken = new Token(config.getProperty("token", ""));
             this.url = config.getProperty("baseUrl") + config.getProperty("version") + '/';
         } catch (IOException io) {
             io.printStackTrace();
