@@ -23,8 +23,8 @@ public class Config {
             config.load(input);
             this.fbToken = new Token(config.getProperty("token", ""));
             this.url = config.getProperty("baseUrl") + config.getProperty("version") + '/';
-        } catch (IOException io) {
-            io.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         } finally {
             if (input != null) {
                 try {

@@ -12,7 +12,7 @@ public class App {
             Connect connect = new Connect(config);
             connect.getUserByToken(fbToken).thenAccept(System.out::println);
         } catch (Exception e) {
-            System.out.println(e.toString());
+            e.printStackTrace();
         }
     }
 }
