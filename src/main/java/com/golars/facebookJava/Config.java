@@ -1,5 +1,7 @@
 package com.golars.facebookJava;
 
+import com.golars.facebookJava.entity.Token;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;

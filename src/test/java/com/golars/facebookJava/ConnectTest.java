@@ -1,46 +1,20 @@
 package com.golars.facebookJava;
 
-import org.asynchttpclient.AsyncCompletionHandler;
-import org.asynchttpclient.Response;
+import com.golars.facebookJava.entity.User;
+
+import java.util.concurrent.CompletableFuture;
 
 public class ConnectTest extends BaseTest {
 
-    public void testGetFbData() throws Exception {
+    public void testGetUserByToken() throws Exception {
         Connect connect = new Connect(this.config);
+        CompletableFuture<User> result = connect.getUserByToken(this.config.getFbToken()).thenApply((User user) -> {
+            assertEquals("1913452152229577", user.getId());
+            assertEquals("Golars Golars", user.getName());
+            assertEquals("golars@bigmir.net", user.getEmail());
+            return user;
+        });
 
-        connect.getFbData(new AsyncCompletionHandler<Response>() {
-            @Override
-            public Response onCompleted(Response response) throws Exception {
-                System.out.println(response.getResponseBody());
-                assertEquals(true, true);
-                return response;
-            }
-
-            @Override
-            public void onThrowable(Throwable t) {
-            }
-        }, "me", "id,name");
-    }
-
-    public void testGetFbDataByToken() throws Exception {
-        Connect connect = new Connect(this.config);
-
-        String token = "token";
-        this.config.setFbToken("token");
-        assertEquals(token, this.config.getFbToken().getToken());
-
-
-        connect.getFbData(new AsyncCompletionHandler<Response>() {
-            @Override
-            public Response onCompleted(Response response) throws Exception {
-                System.out.println(response.getResponseBody());
-                assertEquals(true, true);
-                return response;
-            }
-
-            @Override
-            public void onThrowable(Throwable t) {
-            }
-        }, "me", "id,name");
+        assertNotNull(result.get());
     }
 }

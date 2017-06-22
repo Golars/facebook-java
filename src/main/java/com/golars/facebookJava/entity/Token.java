@@ -1,4 +1,4 @@
-package com.golars.facebookJava;
+package com.golars.facebookJava.entity;
 
 public class Token {
 
