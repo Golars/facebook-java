@@ -1,18 +1,13 @@
 package com.golars.facebookJava;
 
-import junit.framework.TestCase;
+import org.junit.Before;
 
-public class BaseTest extends TestCase {
+public class BaseTest {
 
     protected Config config;
 
-    public void setUp() throws Exception {
+    @Before
+    public void setUp() {
         this.config = new Config("resources/config_test.properties");
-        super.setUp();
-    }
-
-    public void testingConfig() {
-        this.config.setFbToken("token");
-        assertEquals("token", this.config.getFbToken().getToken());
     }
 }

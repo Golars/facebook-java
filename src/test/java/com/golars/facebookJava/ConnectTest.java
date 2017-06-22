@@ -2,10 +2,15 @@ package com.golars.facebookJava;
 
 import com.golars.facebookJava.entity.User;
 
+import org.junit.Test;
 import java.util.concurrent.CompletableFuture;
+
+import static junit.framework.TestCase.assertNotNull;
+import static org.junit.Assert.assertEquals;
 
 public class ConnectTest extends BaseTest {
 
+    @Test
     public void testGetUserByToken() throws Exception {
         Connect connect = new Connect(this.config);
         CompletableFuture<User> result = connect.getUserByToken(this.config.getFbToken()).thenApply((User user) -> {
