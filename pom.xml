@@ -2,9 +2,9 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.golars.facebookJava</groupId>
-    <artifactId>srcs</artifactId>
+    <artifactId>facebookJava</artifactId>
     <packaging>jar</packaging>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0.0</version>
     <build>
         <plugins>
             <plugin>
@@ -17,11 +17,18 @@
             </plugin>
         </plugins>
     </build>
-    <name>srcs</name>
+    <name>golarsFacebookJava</name>
     <url>http://maven.apache.org</url>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+
+    <scm>
+        <url>https://github.com/Golars/facebook-java</url>
+        <connection>scm:git:https://github.com/Golars/facebook-java.git</connection>
+        <developerConnection>scm:git@github.com:Golars/facebook-java.git</developerConnection>
+        <tag>HEAD</tag>
+    </scm>
 
     <dependencies>
         <dependency>
