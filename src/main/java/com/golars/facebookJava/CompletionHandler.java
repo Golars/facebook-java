@@ -1,10 +1,10 @@
 package com.golars.facebookJava;
 
-import com.golars.facebookJava.exception.FbException;
-import com.golars.facebookJava.exception.PermissionException;
-import com.golars.facebookJava.exception.TokenException;
-import org.asynchttpclient.AsyncCompletionHandler;
 import org.asynchttpclient.Response;
+import org.asynchttpclient.AsyncCompletionHandler;
+import com.golars.facebookJava.entity.exception.FbException;
+import com.golars.facebookJava.entity.exception.PermissionException;
+import com.golars.facebookJava.entity.exception.TokenException;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -27,8 +27,14 @@ public class CompletionHandler<T> extends AsyncCompletionHandler<T> {
         return null;
     }
 
+    public void onFbException(FbException e) {
+        FbException exception = this.prepareException(e);
+        exception.printStackTrace();
+        promise.completeExceptionally(new FbException(exception.getMessage()));
+    }
 
-    public FbException prepareException(FbException error) {
+
+    private FbException prepareException(FbException error) {
         int errorCode = error.getJsonObject().get("code").getAsInt();
 
         if (errorCode == 190) {

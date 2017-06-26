@@ -1,6 +1,6 @@
 package com.golars.facebookJava.decoder;
 
-import com.golars.facebookJava.exception.FbException;
+import com.golars.facebookJava.entity.exception.FbException;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import org.asynchttpclient.Response;

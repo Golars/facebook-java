@@ -14,6 +14,6 @@ public class BaseTest {
     public void setUp() {
 
         this.client = new DefaultAsyncHttpClient();
-        this.config = new Config("resources/config_test.properties");
+        this.config = Config.loadFromFile("resources/config_test.properties");
     }
 }

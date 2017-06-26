@@ -3,7 +3,7 @@ package com.golars.facebookJava;
 import com.golars.facebookJava.decoder.UserDecoder;
 import com.golars.facebookJava.entity.Token;
 import com.golars.facebookJava.entity.User;
-import com.golars.facebookJava.exception.FbException;
+import com.golars.facebookJava.entity.exception.FbException;
 import org.asynchttpclient.AsyncHttpClient;
 import org.asynchttpclient.Response;
 
@@ -31,7 +31,7 @@ public class Connect {
                             UserDecoder userDecoder = new UserDecoder(response);
                             promise.complete(userDecoder.getUser());
                         } catch (FbException e) {
-                            this.prepareException(e).printStackTrace();
+                            this.onFbException(e);
                         }
 
                         return null;

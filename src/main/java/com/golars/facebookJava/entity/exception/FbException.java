@@ -1,4 +1,4 @@
-package com.golars.facebookJava.exception;
+package com.golars.facebookJava.entity.exception;
 
 import com.google.gson.JsonObject;
 

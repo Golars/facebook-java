@@ -8,7 +8,7 @@ import org.asynchttpclient.DefaultAsyncHttpClient;
 public class App {
     public static void main(String[] args) {
         try {
-            Config config = new Config("resources/config.properties");
+            Config config = Config.loadFromFile("resources/config.properties");
 
             AsyncHttpClient asyncHttpClient = new DefaultAsyncHttpClient();
             Token fbToken = new Token("EAAEz2eMHkdQBAAszTQUMJhz1kHzz059KEexP0MssGgNs6jZAwpvTWlEBqvLdM4jXr37jlDjDBdaghX7KJ83g6GMZAgqqerrgih3LF7X756Q7bzgyXYkEK6TfzZAwR3Ja09gH4ccAcEZC00vRORl8ZBoDFTl7zla8ZD");

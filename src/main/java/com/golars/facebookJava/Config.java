@@ -13,27 +13,7 @@ public class Config {
 
     private Token fbToken;
 
-    public Config(String configFilePath) {
-
-        Properties config = new Properties();
-        InputStream input = null;
-
-        try {
-            input = new FileInputStream(configFilePath);
-            config.load(input);
-            this.fbToken = new Token(config.getProperty("token", ""));
-            this.url = config.getProperty("baseUrl") + config.getProperty("version") + '/';
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            if (input != null) {
-                try {
-                    input.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
+    public Config() {
     }
 
     public Config(Token token, String url) {
@@ -55,5 +35,31 @@ public class Config {
 
     public String getPrepareUrl(String path, String fields, Token token) {
         return this.url + path + "?access_token=" + token.getToken() + "&fields=" + fields;
+    }
+
+    public static Config loadFromFile(String configFilePath) {
+        Config config = new Config();
+        Properties fileConfig = new Properties();
+        InputStream input = null;
+
+        try {
+            input = new FileInputStream(configFilePath);
+            fileConfig.load(input);
+            Token fbToken = new Token(fileConfig.getProperty("token", ""));
+            String url = fileConfig.getProperty("baseUrl") + fileConfig.getProperty("version") + '/';
+            config = new Config(fbToken, url);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (input != null) {
+                try {
+                    input.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+
+        return config;
     }
 }
