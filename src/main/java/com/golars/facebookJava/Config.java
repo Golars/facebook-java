@@ -36,6 +36,11 @@ public class Config {
         }
     }
 
+    public Config(Token token, String url) {
+        this.fbToken = token;
+        this.url = url;
+    }
+
     public Token getFbToken() {
         return fbToken;
     }

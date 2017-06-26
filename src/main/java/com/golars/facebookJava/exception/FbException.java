@@ -1,12 +1,9 @@
-package com.golars.facebookJava;
+package com.golars.facebookJava.exception;
 
 import com.google.gson.JsonObject;
 
 public class FbException extends Exception {
     private JsonObject jsonObject;
-
-    public FbException() {
-    }
 
     public FbException(String message) {
         super(message);
