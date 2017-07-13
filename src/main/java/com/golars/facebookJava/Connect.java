@@ -20,23 +20,26 @@ public class Connect {
         this.httpClient = httpClient;
     }
 
-    public CompletableFuture<User> getUserByToken(Token token) throws FbException {
+    public CompletableFuture<User> getUserByToken(Token token) throws FbException
+    {
         CompletableFuture<User> promise = new CompletableFuture<>();
         this.httpClient
-                .prepareGet(this.config.getPrepareUrl("me", "id,name,email,picture.width(720).height(720)", token))
-                .execute(new CompletionHandler(promise) {
-                    @Override
-                    public User onCompleted(Response response) throws Exception {
-                        try{
-                            UserDecoder userDecoder = new UserDecoder(response);
-                            promise.complete(userDecoder.getUser());
-                        } catch (FbException e) {
-                            this.onFbException(e);
-                        }
-
-                        return null;
+            .prepareGet(this.config.getPrepareUrl("me", "id,name,email,picture.width(720).height(720)", token))
+            .execute(new CompletionHandler(promise)
+            {
+                @Override
+                public User onCompleted(Response response) throws Exception
+                {
+                    try {
+                        UserDecoder userDecoder = new UserDecoder(response);
+                        promise.complete(userDecoder.getUser());
+                    } catch (FbException e) {
+                        this.onFbException(e);
                     }
-                });
+
+                    return null;
+                }
+            });
 
         return promise;
     }
